@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>External Tool</Name>
+    <Assembly>D:\Lavoro\Progetti\GitHub\RevitOpenAndActivateDuringIdle\RevitOpenAndActivateDuringIdle\RevitOpenAndActivateDuringIdle\bin\Debug\RevitOpenAndActivateDuringIdle.dll</Assembly>
+    <ClientId></ClientId>
+    <FullClassName>RevitOpenAndActivateDuringIdle.AddinServer</FullClassName>
+    <VendorId>LuigiTrabacchin</VendorId>
+    <VendorDescription>Luigi Trabacchin, it's me</VendorDescription>
+  </AddIn>
+</RevitAddIns>
