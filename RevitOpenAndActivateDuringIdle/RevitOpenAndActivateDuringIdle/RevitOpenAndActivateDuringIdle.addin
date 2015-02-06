@@ -3,8 +3,8 @@
   <AddIn Type="Application">
     <Name>External Tool</Name>
     <Assembly>D:\Lavoro\Progetti\GitHub\RevitOpenAndActivateDuringIdle\RevitOpenAndActivateDuringIdle\RevitOpenAndActivateDuringIdle\bin\Debug\RevitOpenAndActivateDuringIdle.dll</Assembly>
-    <ClientId></ClientId>
-    <FullClassName>RevitOpenAndActivateDuringIdle.AddinServer</FullClassName>
+    <ClientId>1453fe7b-535f-4979-a816-4e604d0a5f9c</ClientId>
+    <FullClassName>RevitOpenAndActivateDuringIdle.ExternalApplication</FullClassName>
     <VendorId>LuigiTrabacchin</VendorId>
     <VendorDescription>Luigi Trabacchin, it's me</VendorDescription>
   </AddIn>

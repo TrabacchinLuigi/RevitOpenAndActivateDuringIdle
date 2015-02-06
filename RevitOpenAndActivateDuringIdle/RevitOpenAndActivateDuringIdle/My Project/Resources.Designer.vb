@@ -59,5 +59,14 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to Open a file.
+        '''</summary>
+        Friend ReadOnly Property Open_a_file() As String
+            Get
+                Return ResourceManager.GetString("Open_a_file", resourceCulture)
+            End Get
+        End Property
     End Module
 End Namespace
