@@ -20,11 +20,22 @@ Public Class ExternalApplication
         End Get
     End Property
 
+    Private UIControlledApplicationField As RUI.UIControlledApplication
+    Public Property UIControlledApplication As RUI.UIControlledApplication
+        Get
+            Return UIControlledApplicationField
+        End Get
+        Set(value As RUI.UIControlledApplication)
+            UIControlledApplicationField = value
+        End Set
+    End Property
+
     Public Sub New()
         Singleton = Me
     End Sub
 
     Public Function OnStartup(application As RUI.UIControlledApplication) As RUI.Result Implements RUI.IExternalApplication.OnStartup
+        UIControlledApplication = application
         AddHandler application.Idling, AddressOf HandleIdling
 
         ' create some user interface

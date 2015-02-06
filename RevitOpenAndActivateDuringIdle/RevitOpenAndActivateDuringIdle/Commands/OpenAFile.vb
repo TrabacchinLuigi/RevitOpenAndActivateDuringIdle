@@ -18,8 +18,16 @@ Namespace Commands
                         commandData.Application.OpenAndActivateDocument(sf.FilePath.Text)
                     Catch ex As Exception
                         System.Diagnostics.Debugger.Break()
+                        Dim document As RDB.Document = Nothing
+                        Dim DocumentOpenedHandler As New EventHandler(Of RDB.Events.DocumentOpenedEventArgs)(
+                            Sub(sender As Autodesk.Revit.ApplicationServices.Application, e As RDB.Events.DocumentOpenedEventArgs)
+                                RemoveHandler sender.DocumentOpened, DocumentOpenedHandler
+                                document = e.Document
+                            End Sub
+                        )
+                        AddHandler ExternalApplication.Singleton.UIControlledApplication.ControlledApplication.DocumentOpened, DocumentOpenedHandler
+                        Process.Start(sf.FilePath.Text)
                     End Try
-
                 End Sub
             )
             ExternalApplication.Singleton.ThingsToDoOnIdling.Enqueue(task)
