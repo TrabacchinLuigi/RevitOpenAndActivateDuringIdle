@@ -79,6 +79,7 @@
     <Compile Include="Availabilities\AlwaysAvailable.vb" />
     <Compile Include="ExternalApplication.vb" />
     <Compile Include="Commands\OpenAFile.vb" />
+    <Compile Include="ExternalEvents\OpenDocument.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

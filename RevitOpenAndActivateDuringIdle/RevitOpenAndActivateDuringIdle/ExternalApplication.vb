@@ -13,21 +13,11 @@ Public Class ExternalApplication
         End Set
     End Property
 
-    Private ThingsToDoOnIdlingField As New Collections.Concurrent.ConcurrentQueue(Of Threading.Tasks.Task)
-    Public ReadOnly Property ThingsToDoOnIdling As Collections.Concurrent.ConcurrentQueue(Of Threading.Tasks.Task)
+    Private OpenDocumentExternalEventField As RUI.ExternalEvent
+    Public ReadOnly Property RunTaskEvent As RUI.ExternalEvent
         Get
-            Return ThingsToDoOnIdlingField
+            Return OpenDocumentExternalEventField
         End Get
-    End Property
-
-    Private UIControlledApplicationField As RUI.UIControlledApplication
-    Public Property UIControlledApplication As RUI.UIControlledApplication
-        Get
-            Return UIControlledApplicationField
-        End Get
-        Set(value As RUI.UIControlledApplication)
-            UIControlledApplicationField = value
-        End Set
     End Property
 
     Public Sub New()
@@ -35,8 +25,7 @@ Public Class ExternalApplication
     End Sub
 
     Public Function OnStartup(application As RUI.UIControlledApplication) As RUI.Result Implements RUI.IExternalApplication.OnStartup
-        UIControlledApplication = application
-        AddHandler application.Idling, AddressOf HandleIdling
+        OpenDocumentExternalEventField = RUI.ExternalEvent.Create(New ExternalEvents.OpenDocumentExternalEventHandler())
 
         ' create some user interface
         application.CreateRibbonTab("Tests")
@@ -70,11 +59,5 @@ Public Class ExternalApplication
         SingletonField = Nothing
         Return Autodesk.Revit.UI.Result.Succeeded
     End Function
-
-    Private Sub HandleIdling(sender As Object, e As RUI.Events.IdlingEventArgs)
-        ' sender type ?
-        Dim task As System.Threading.Tasks.Task = Nothing
-        If ThingsToDoOnIdlingField.TryDequeue(task) Then task.RunSynchronously()
-    End Sub
 
 End Class
