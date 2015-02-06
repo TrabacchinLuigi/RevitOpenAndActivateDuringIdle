@@ -21,6 +21,7 @@ Namespace Commands
                         Dim document As RDB.Document = Nothing
                         Dim DocumentOpenedHandler As New EventHandler(Of RDB.Events.DocumentOpenedEventArgs)(
                             Sub(sender As Autodesk.Revit.ApplicationServices.Application, e As RDB.Events.DocumentOpenedEventArgs)
+                                If Not String.Equals(e.Document.PathName, sf.FilePath.Text, StringComparison.OrdinalIgnoreCase) Then Return
                                 RemoveHandler sender.DocumentOpened, DocumentOpenedHandler
                                 document = e.Document
                             End Sub
